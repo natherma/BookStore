@@ -43,10 +43,10 @@ export default function Home() {
                             <th className='border border-slate-600 rounded-md'>
                                 Title
                             </th>
-                            <th className='border border-slate-600 rounded-md mx-md:hidden'>
+                            <th className='border border-slate-600 rounded-md max-md:hidden'>
                                 Author
                             </th>
-                            <th className='border border-slate-600 rounded-md mx-md:hidden'>
+                            <th className='border border-slate-600 rounded-md max-md:hidden'>
                                 Pulished Year
                             </th>
                             <th className='border border-slate-600 rounded-md'>
@@ -72,7 +72,7 @@ export default function Home() {
                                         <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
                                         {book.publishYear}
                                         </td>
-                                        <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
+                                        <td className='border border-slate-700 rounded-md text-center'>
                                             <div className='flex justify-center gap-x-4'>
                                             <Link to={`/Showbook/${book._id}`}>
                                                 <BsInfoCircle className='text-2xl text-blue-700'/>
