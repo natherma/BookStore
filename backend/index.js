@@ -128,7 +128,7 @@ app.delete("/deletebook/:id",async(req,res)=>
 app.listen(PORT,()=>
 {
     console.log(`Server stated at http://localhost:${PORT}`)
-    mongoose.connect(process.env.MONGODB_KEY).then(()=>
+    mongoose.connect("mongodb+srv://nafees:nafees@cluster0.o8koijo.mongodb.net/?retryWrites=true&w=majority").then(()=>
         {
             console.log("Connected to Database")
         }).catch(error => 
