@@ -1,7 +1,7 @@
 import {React,useEffect,useState} from 'react'
 import axios from 'axios'
 import Spinner from '../components/Spinner'
-import { Link } from 'react-router-dom'
+import { Link,Navigate, useNavigate } from 'react-router-dom'
 import {BsInfoCircle} from "react-icons/bs"
 import {AiOutlineEdit} from "react-icons/ai"
 import {MdOutlineDelete} from 'react-icons/md'
@@ -9,9 +9,24 @@ import {MdOutlineDelete} from 'react-icons/md'
 export default function Home() {
        const [books,setBooks] = useState([])
        const [loading,setLoading] = useState(false)
-       let Deletebook = ()=>
+       const navigate = useNavigate()
+       let Deletebook = (id)=>
        {
-        alert("Book Deleted")
+         setLoading(true)
+         axios.delete(`http://localhost:3030/deletebook/${id}`).then(()=>
+         {
+            setLoading(true)
+            axios.get('http://localhost:3030/allbooks').then(response => 
+            {
+                setBooks(response.data)
+                setLoading(false)
+                alert("Book got deleted")
+            })
+         }).catch(error =>
+            {
+                console.log(error)
+                setLoading(false)
+            })
        }
        useEffect(()=>{
         setLoading(true)
@@ -80,7 +95,7 @@ export default function Home() {
                                             <Link to={`/Editbook/${book._id}`}>
                                                 <AiOutlineEdit className='text-2xl text-orange-700'/>
                                             </Link>
-                                            <button onClick={Deletebook}>
+                                            <button onClick={()=>{Deletebook(book._id)}}>
                                                  <MdOutlineDelete className='text-2xl text-red-700'/>
                                             </button>
                                             </div>
