@@ -17,7 +17,7 @@ export default function Editbook() {
     if(title||author||publishYear)
     {
       setLoading(true);
-    axios.put(`http://localhost:3030/updateBook/${id}`,data).then(()=>
+    axios.put(`https://bookstore-gpkq.onrender.com/updateBook/${id}`,data).then(()=>
     {
      setLoading(false);
      navigate('/');
@@ -35,7 +35,7 @@ export default function Editbook() {
   }
   useEffect(()=>{
     setLoading(true)
-    axios.get(`http://localhost:3030/allbooks/${id}`).then(response => 
+    axios.get(`https://bookstore-gpkq.onrender.com/allbooks/${id}`).then(response => 
     {
       setTitle(response.data.title)
       setAuthor(response.data.author)

@@ -13,7 +13,7 @@ export default function Showbook() {
   const {id} = useParams()
   useEffect(()=>{
     setLoading(true)
-    axios.get(`http://localhost:3030/allbooks/${id}`).then(response => 
+    axios.get(`https://bookstore-gpkq.onrender.com/allbooks/${id}`).then(response => 
     {
         setBooks(response.data)
         setLoading(false)

@@ -13,10 +13,10 @@ export default function Home() {
        let Deletebook = (id)=>
        {
          setLoading(true)
-         axios.delete(`http://localhost:3030/deletebook/${id}`).then(()=>
+         axios.delete(`https://bookstore-gpkq.onrender.com/deletebook/${id}`).then(()=>
          {
             setLoading(true)
-            axios.get('http://localhost:3030/allbooks').then(response => 
+            axios.get('https://bookstore-gpkq.onrender.com/allbooks').then(response => 
             {
                 setBooks(response.data)
                 setLoading(false)
@@ -30,7 +30,7 @@ export default function Home() {
        }
        useEffect(()=>{
         setLoading(true)
-        axios.get('http://localhost:3030/allbooks').then(response => 
+        axios.get('https://bookstore-gpkq.onrender.com/allbooks').then(response => 
         {
             setBooks(response.data)
             setLoading(false)
