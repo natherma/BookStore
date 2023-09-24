@@ -1,5 +1,4 @@
 import express from "express";
-import {PORT} from "./config.js"
 import dotenv from "dotenv"
 import mongoose from "mongoose";
 import {book} from "./models/bookModels.js"
@@ -8,6 +7,7 @@ import cors from "cors"
 dotenv.config()
 
 let app = express();
+let PORT = process.env.PORT||303
 
 app.use(express.json())
 app.use(cors({
@@ -128,7 +128,7 @@ app.delete("/deletebook/:id",async(req,res)=>
 app.listen(PORT,()=>
 {
     console.log(`Server stated at http://localhost:${PORT}`)
-    mongoose.connect("mongodb+srv://nafees:nafees@cluster0.o8koijo.mongodb.net/?retryWrites=true&w=majority").then(()=>
+    mongoose.connect(process.env.MONGODB_KEY).then(()=>
         {
             console.log("Connected to Database")
         }).catch(error => 
